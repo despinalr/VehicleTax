@@ -1,9 +1,9 @@
 $(document).on("ready", function() {
 	$("#consultar").click(function() {
-            alert("Consultar");
+            window.location.href = "reporte.html";
 	});
         
         $("#actualizar").click(function() {
-            alert("Actualizar");
+            window.location.href = "pago.html";
 	});
 });
