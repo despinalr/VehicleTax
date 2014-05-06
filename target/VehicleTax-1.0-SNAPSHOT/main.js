@@ -14,4 +14,16 @@ $(document).on("ready", function() {
         $("#actualizarVehiculo").click(function() {
             alert('actualizarVehiculo');
 	});
+        
+        $("#actualizarContribuyente").click(function() {
+            alert('actualizarContribuyente');
+	});
+        
+        $("#calcularLiquidacion").click(function() {
+            alert('calcularLiquidacion');
+	});
+        
+        $("#pagarLiquidacion").click(function() {
+            alert('pagarLiquidacion');
+	});
 });
