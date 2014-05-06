@@ -11,15 +11,15 @@
             <br/><br/>
             <table>
                 <tr>
-                    <td>Placa: </td><td><input type="text" name="placa"></td>
-                    <td>Modelo: </td><td><input type="text" name="modelo"></td>
-                    <td>Uso: </td><td><input type="text" name="uso"></td>
+                    <td>Placa: </td><td><input type="text" id="placa"></td>
+                    <td>Modelo: </td><td><input type="text" id="modelo"></td>
+                    <td>Uso: </td><td><input type="text" id="uso"></td>
                     <td><button id="buscarVehiculo">Buscar</button><br/><button id="actualizarVehiculo">Actualizar</button></td>
                 </tr>
                 <tr>
-                    <td>Marca: </td><td><input type="text" name="marca"></td>
-                    <td>Linea: </td><td><input type="text" name="linea"></td>
-                    <td>Capacidad: </td><td><input type="text" name="capacidad"></td>
+                    <td>Marca: </td><td><input type="text" id="marca"></td>
+                    <td>Linea: </td><td><input type="text" id="linea"></td>
+                    <td>Capacidad: </td><td><input type="text" id="capacidad"></td>
                 </tr>
             </table>
         </div>
@@ -29,13 +29,13 @@
             <br/><br/>
             <table>
                 <tr>
-                    <td>Identificacion: </td><td><input type="text" name="identificacion"></td>
-                    <td>Direccion: </td><td><input type="text" name="direccion"></td>
+                    <td>Identificacion: </td><td><input type="text" id="identificacion"></td>
+                    <td>Direccion: </td><td><input type="text" id="direccion"></td>
                     <td><button id="actualizarContribuyente">Actualizar</button></td>
                 </tr>
                 <tr>
-                    <td>Nombre: </td><td><input type="text" name="nombre"></td>
-                    <td>Ciudad: </td><td><input type="text" name="ciudad"></td>
+                    <td>Nombre: </td><td><input type="text" id="nombre"></td>
+                    <td>Ciudad: </td><td><input type="text" id="ciudad"></td>
                 </tr>
             </table>
         </div>
@@ -43,16 +43,16 @@
         <div>
             Liquidacion
             <br/><br/>
-            <table border="1">
+            <table border="1" id="liquidacion">
                 <tr><td>Item</td><td>Hasta 16/04</td><td>Hasta 22/06</td></tr>
-                <tr><td>Valor Base</td><td>288.000</td><td>350.000</td></tr>
-                <tr><td>Derechos Semaforizacion</td><td>34.000</td><td>45.000</td></tr>
-                <tr><td>Descuento</td><td>-29.000</td><td>0</td></tr>
+                <tr id="valorbase"><td>Valor Base</td><td>288.000</td><td>350.000</td></tr>
+                <tr id="derechos"><td>Derechos Semaforizacion</td><td>34.000</td><td>45.000</td></tr>
+                <tr id="descuento"><td>Descuento</td><td>-29.000</td><td>0</td></tr>
             </table>
             <br/>
             <table>
-                <tr><td><input type="checkbox" name="descuento"> 10% Descuento</td><td><button id="calcularLiquidacion">Calcular</button></td></tr>
-                <tr><td><input type="text" name="resultado"></td><td><button id="pagarLiquidacion">Pagar</button></td></tr>
+                <tr><td><input type="checkbox" id="descuento"> 10% Descuento</td><td><button id="calcularLiquidacion">Calcular</button></td></tr>
+                <tr><td><input type="text" id="resultado"></td><td><button id="pagarLiquidacion">Pagar</button></td></tr>
             </table>
         </div>
     </body>

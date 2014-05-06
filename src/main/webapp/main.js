@@ -20,7 +20,8 @@ $(document).on("ready", function() {
 	});
         
         $("#calcularLiquidacion").click(function() {
-            alert('calcularLiquidacion');
+            var value = $('#liquidacion tr#valorbase td').slice(1, 2).text();
+            $("#resultado").val(value);
 	});
         
         $("#pagarLiquidacion").click(function() {
