@@ -20,11 +20,28 @@ $(document).on("ready", function() {
 	});
         
         $("#calcularLiquidacion").click(function() {
-            var value = $('#liquidacion tr#valorbase td').slice(1, 2).text();
-            $("#resultado").val(value);
+            var exp = "<valorbase> + <derechos> + (<descuento> - 30)";
+            var result = replaceExpression(exp);
+            $("#resultado").val(result);
 	});
         
         $("#pagarLiquidacion").click(function() {
             alert('pagarLiquidacion');
 	});
+        
+        function replaceExpression(exp) {
+            var finalExp = exp;
+            console.log('Inicio: ' + finalExp);
+            var match = XRegExp.matchChain(exp, [XRegExp('(?is)<.*?>'), /\w*/]);
+            for(var i = 0; i < match.length; i++) {
+                if(match[i].length > 0) {
+                    finalExp = finalExp.replace('<' + match[i] + '>', GetValue(match[i]));
+                }
+            }
+            return eval(finalExp);
+        }
+        
+        function GetValue(expression) {
+            return $('#liquidacion tr#' + expression + ' td').slice(1, 2).text();
+        }
 });
