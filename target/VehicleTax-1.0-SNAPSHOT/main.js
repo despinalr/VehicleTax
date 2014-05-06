@@ -6,4 +6,12 @@ $(document).on("ready", function() {
         $("#actualizar").click(function() {
             window.location.href = "pago.html";
 	});
+        
+        $("#buscarVehiculo").click(function() {
+            alert('buscarVehiculo');
+	});
+        
+        $("#actualizarVehiculo").click(function() {
+            alert('actualizarVehiculo');
+	});
 });
