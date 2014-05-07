@@ -9,20 +9,24 @@ $(document).on("ready", function() {
         
         $('#buscarVehiculo').click(function() {
             $.get('http://localhost:8080/VehicleTax/webresources/Service/' + $('#placa').val(), function(data) {
-                updateFields(data);
+                updateFieldsVehiculo(data);
                 $('#actualizarVehiculo').removeAttr("disabled");
+                $.get('http://localhost:8080/VehicleTax/webresources/Service/Contribuyente/' + $('#idcontribuyente').val(), function(data) {
+                    updateFieldsContribuyente(data);
+                    $('#actualizarContribuyente').removeAttr("disabled");
+                });
             });
 	});
         
         $('#actualizarVehiculo').click(function() {
-            var vehiculo = {id:$('#idVehiculo').val(),placa:$('#placa').val(),modelo:$('#modelo').val(),uso:$('#uso').val(),marca:$('#marca').val(),linea:$('#linea').val(),capacidad:$('#capacidad').val()};
+            var vehiculo = {id:$('#idvehiculo').val(),placa:$('#placa').val(),modelo:$('#modelo').val(),uso:$('#uso').val(),marca:$('#marca').val(),linea:$('#linea').val(),capacidad:$('#capacidad').val()};
             $.ajax({
                 url: 'http://localhost:8080/VehicleTax/webresources/Service',
                 type: 'POST',
                 contentType: "application/json",
                 data: JSON.stringify(vehiculo)
             }).done(function(data) {
-                updateFields(data);
+                updateFieldsVehiculo(data);
                 alert('Vehiculo Actualizado!!!');
             })
             .error(function(data) {
@@ -31,7 +35,19 @@ $(document).on("ready", function() {
 	});
         
         $("#actualizarContribuyente").click(function() {
-            alert('actualizarContribuyente');
+            var contribuyente = {id:$('#idcontribuyente').val(),identificacion:$('#identificacion').val(),direccion:$('#direccion').val(),nombre:$('#nombre').val(),ciudad:$('#ciudad').val()};
+            $.ajax({
+                url: 'http://localhost:8080/VehicleTax/webresources/Service',
+                type: 'PUT',
+                contentType: "application/json",
+                data: JSON.stringify(contribuyente)
+            }).done(function(data) {
+                updateFieldsContribuyente(data);
+                alert('Contribuyente Actualizado!!!');
+            })
+            .error(function(data) {
+                alert('Error Actualizado Contribuyente!!!');
+            });
 	});
         
         $("#calcularLiquidacion").click(function() {
@@ -60,12 +76,20 @@ $(document).on("ready", function() {
             return $('#'+expression).val();
         }
         
-        function updateFields(data) {
-            $('#idVehiculo').val(data.id);
+        function updateFieldsVehiculo(data) {
+            $('#idvehiculo').val(data.id);
             $('#modelo').val(data.modelo);
             $('#uso').val(data.uso);
             $('#marca').val(data.marca);
             $('#linea').val(data.linea);
             $('#capacidad').val(data.capacidad);
+            $('#idcontribuyente').val(data.idcontribuyente);
+        }
+        
+        function updateFieldsContribuyente(data) {
+            $('#identificacion').val(data.identificacion);
+            $('#nombre').val(data.nombre);
+            $('#direccion').val(data.direccion);
+            $('#ciudad').val(data.ciudad);
         }
 });

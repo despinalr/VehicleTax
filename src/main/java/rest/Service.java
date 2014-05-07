@@ -1,6 +1,7 @@
 package rest;
 
 import entity.Vehiculo;
+import entity.Contribuyente;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Path;
@@ -33,5 +34,16 @@ public class Service {
     @POST
     public Vehiculo updateVehiculo(Vehiculo vehiculo){
             return _logic.updateVehiculo(vehiculo);
+    }
+    
+    @GET
+    @Path("/Contribuyente/{id}")
+    public Contribuyente getContribuyente(@PathParam("id") Long idContribuyente){
+        return _logic.getContribuyente(idContribuyente);
+    }
+    
+    @PUT
+    public Contribuyente updateContribuyente(Contribuyente contribuyente){
+            return _logic.updateContribuyente(contribuyente);
     }
 }

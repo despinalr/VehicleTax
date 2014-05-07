@@ -17,6 +17,7 @@ public class Vehiculo {
     private String marca;
     private String linea;
     private String capacidad;
+    private Long idcontribuyente;
     
     public Long getId(){
         return id;
@@ -65,5 +66,12 @@ public class Vehiculo {
     }
     public void setcapacidad(String capacidad){
         this.capacidad = capacidad;
+    }
+    
+    public Long getidcontribuyente(){
+        return idcontribuyente;
+    }
+    public void setidcontribuyente(Long idcontribuyente){
+        this.idcontribuyente = idcontribuyente;
     }
 }

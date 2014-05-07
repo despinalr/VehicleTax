@@ -9,6 +9,7 @@ import javax.persistence.Query;
 import java.util.List;
 
 import entity.Vehiculo;
+import entity.Contribuyente;
 
 @Default
 @Stateless
@@ -26,5 +27,13 @@ public class Logic implements ILogic {
     
     public Vehiculo updateVehiculo(Vehiculo vehiculo) {
         return entityManager.merge(vehiculo);
+    }
+    
+    public Contribuyente getContribuyente(Long id) {
+        return entityManager.find(Contribuyente.class, id);
+    }
+    
+    public Contribuyente updateContribuyente(Contribuyente contribuyente) {
+        return entityManager.merge(contribuyente);
     }
 }
