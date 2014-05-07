@@ -1,5 +1,5 @@
 $(document).on("ready", function() {
-	$("#consultar").click(function() {
+	$('#consultar').click(function() {
             window.location.href = "reporte.html";
 	});
         
@@ -8,7 +8,13 @@ $(document).on("ready", function() {
 	});
         
         $("#buscarVehiculo").click(function() {
-            alert('buscarVehiculo');
+            $.get('http://localhost:8080/VehicleTax/webresources/Service/' + $('#placa').val(), function(data) {
+                $('#modelo').val(data.modelo);
+                $('#uso').val(data.uso);
+                $('#marca').val(data.marca);
+                $('#linea').val(data.linea);
+                $('#capacidad').val(data.capacidad);
+            });
 	});
         
         $("#actualizarVehiculo").click(function() {
@@ -22,7 +28,7 @@ $(document).on("ready", function() {
         $("#calcularLiquidacion").click(function() {
             var exp = "<valorbase> + <derechos> + (<descuento> - 30)";
             var result = replaceExpression(exp);
-            $("#resultado").val(result);
+            $('#resultado').val(result);
 	});
         
         $("#pagarLiquidacion").click(function() {
