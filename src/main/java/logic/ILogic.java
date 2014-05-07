@@ -1,5 +1,7 @@
 package logic;
 
+import entity.Vehiculo;
+
 public interface ILogic {
-    public String get();
+    public Vehiculo getVehiculo(String placa);
 }

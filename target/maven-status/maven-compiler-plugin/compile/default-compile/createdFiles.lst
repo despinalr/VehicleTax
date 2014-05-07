@@ -1,3 +1,4 @@
-rest\Service.class
 logic\ILogic.class
+entity\Vehiculo.class
 logic\Logic.class
+rest\Service.class

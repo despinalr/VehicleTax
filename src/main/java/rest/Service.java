@@ -1,5 +1,6 @@
 package rest;
 
+import entity.Vehiculo;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Path;
@@ -24,7 +25,13 @@ public class Service {
     protected ILogic _logic;
     
     @GET
-    public String get(){
-        return _logic.get();
+    @Path("{placa}")
+    public Vehiculo getVehiculo(@PathParam("placa") String placa){
+        return _logic.getVehiculo(placa);
+    }
+    
+    @PUT
+    public void updateVehiculo(){
+            return;
     }
 }
