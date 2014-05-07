@@ -19,7 +19,7 @@ $(document).on("ready", function() {
 	});
         
         $('#actualizarVehiculo').click(function() {
-            var vehiculo = {id:$('#idvehiculo').val(),placa:$('#placa').val(),modelo:$('#modelo').val(),uso:$('#uso').val(),marca:$('#marca').val(),linea:$('#linea').val(),capacidad:$('#capacidad').val()};
+            var vehiculo = {id:$('#idvehiculo').val(),placa:$('#placa').val(),modelo:$('#modelo').val(),uso:$('#uso').val(),marca:$('#marca').val(),linea:$('#linea').val(),capacidad:$('#capacidad').val(),idcontribuyente:$('#idcontribuyente').val()};
             $.ajax({
                 url: 'http://localhost:8080/VehicleTax/webresources/Service',
                 type: 'POST',
