@@ -7,18 +7,27 @@ $(document).on("ready", function() {
             window.location.href = "pago.html";
 	});
         
-        $("#buscarVehiculo").click(function() {
+        $('#buscarVehiculo').click(function() {
             $.get('http://localhost:8080/VehicleTax/webresources/Service/' + $('#placa').val(), function(data) {
-                $('#modelo').val(data.modelo);
-                $('#uso').val(data.uso);
-                $('#marca').val(data.marca);
-                $('#linea').val(data.linea);
-                $('#capacidad').val(data.capacidad);
+                updateFields(data);
+                $('#actualizarVehiculo').removeAttr("disabled");
             });
 	});
         
-        $("#actualizarVehiculo").click(function() {
-            alert('actualizarVehiculo');
+        $('#actualizarVehiculo').click(function() {
+            var vehiculo = {id:$('#idVehiculo').val(),placa:$('#placa').val(),modelo:$('#modelo').val(),uso:$('#uso').val(),marca:$('#marca').val(),linea:$('#linea').val(),capacidad:$('#capacidad').val()};
+            $.ajax({
+                url: 'http://localhost:8080/VehicleTax/webresources/Service',
+                type: 'POST',
+                contentType: "application/json",
+                data: JSON.stringify(vehiculo)
+            }).done(function(data) {
+                updateFields(data);
+                alert('Vehiculo Actualizado!!!');
+            })
+            .error(function(data) {
+                alert('Error Actualizado Vehiculo!!!');
+            });
 	});
         
         $("#actualizarContribuyente").click(function() {
@@ -49,5 +58,14 @@ $(document).on("ready", function() {
         
         function GetValue(expression) {
             return $('#liquidacion tr#' + expression + ' td').slice(1, 2).text();
+        }
+        
+        function updateFields(data) {
+            $('#idVehiculo').val(data.id);
+            $('#modelo').val(data.modelo);
+            $('#uso').val(data.uso);
+            $('#marca').val(data.marca);
+            $('#linea').val(data.linea);
+            $('#capacidad').val(data.capacidad);
         }
 });

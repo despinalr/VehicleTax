@@ -30,8 +30,8 @@ public class Service {
         return _logic.getVehiculo(placa);
     }
     
-    @PUT
-    public void updateVehiculo(){
-            return;
+    @POST
+    public Vehiculo updateVehiculo(Vehiculo vehiculo){
+            return _logic.updateVehiculo(vehiculo);
     }
 }

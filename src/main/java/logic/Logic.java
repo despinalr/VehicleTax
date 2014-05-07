@@ -23,4 +23,8 @@ public class Logic implements ILogic {
         List<Vehiculo> vehiculos = q.getResultList();
         return vehiculos.get(0);
     }
+    
+    public Vehiculo updateVehiculo(Vehiculo vehiculo) {
+        return entityManager.merge(vehiculo);
+    }
 }
