@@ -1,63 +1,64 @@
 <html>
     <head>
         <title>Pago</title>
-        <script src="jquery-2.1.1.min.js"></script>
-        <script src="main.js"></script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/xregexp/2.0.0/xregexp-min.js"></script>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src='jquery-2.1.1.min.js'></script>
+        <script src='main.js'></script>
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/xregexp/2.0.0/xregexp-min.js'></script>
+        <link rel='stylesheet' type='text/css' href='style.css'>
     </head>
     <body>
         <div>
-            Datos del Vehiculo
-            <input type="hidden" id="idvehiculo">
-            <input type="hidden" id="idcontribuyente">
-            <br/><br/>
+            <h1>Datos del Vehiculo</h1>
+            <input type='hidden' id='idvehiculo'>
+            <input type='hidden' id='idcontribuyente'>
+            <br/>
             <table>
                 <tr>
-                    <td>Placa: </td><td><input type="text" id="placa"></td>
-                    <td>Modelo: </td><td><input type="text" id="modelo"></td>
-                    <td>Uso: </td><td><input type="text" id="uso"></td>
-                    <td><button id="buscarVehiculo">Buscar</button><br/><button id="actualizarVehiculo" disabled>Actualizar</button></td>
+                    <td>Placa: </td><td><input type='text' id='placa'></td>
+                    <td>Modelo: </td><td><input type='text' id='modelo'></td>
+                    <td>Uso: </td><td><input type='text' id='uso'></td>
+                    <td><button id='buscarVehiculo'>Buscar</button><br/><button id='actualizarVehiculo' disabled>Actualizar</button></td>
                 </tr>
                 <tr>
-                    <td>Marca: </td><td><input type="text" id="marca"></td>
-                    <td>Linea: </td><td><input type="text" id="linea"></td>
-                    <td>Capacidad: </td><td><input type="text" id="capacidad"></td>
+                    <td>Marca: </td><td><input type='text' id='marca'></td>
+                    <td>Linea: </td><td><input type='text' id='linea'></td>
+                    <td>Capacidad: </td><td><input type='text' id='capacidad'></td>
                 </tr>
             </table>
         </div>
         <br/><br/>
         <div>
-            Contribuyente
-            <br/><br/>
+            <h1>Contribuyente</h1>
+            <br/>
             <table>
                 <tr>
-                    <td>Identificacion: </td><td><input type="text" id="identificacion"></td>
-                    <td>Direccion: </td><td><input type="text" id="direccion"></td>
-                    <td><button id="actualizarContribuyente" disabled>Actualizar</button></td>
+                    <td>Identificacion: </td><td><input type='text' id='identificacion'></td>
+                    <td>Direccion: </td><td><input type='text' id='direccion'></td>
+                    <td><button id='actualizarContribuyente' disabled>Actualizar</button></td>
                 </tr>
                 <tr>
-                    <td>Nombre: </td><td><input type="text" id="nombre"></td>
-                    <td>Ciudad: </td><td><input type="text" id="ciudad"></td>
+                    <td>Nombre: </td><td><input type='text' id='nombre'></td>
+                    <td>Ciudad: </td><td><input type='text' id='ciudad'></td>
                 </tr>
             </table>
         </div>
         <br/>
         <div>
-            Liquidacion
-            <br/><br/>
-            <table border="1" id="liquidacion">
+            <h1>Liquidacion</h1>
+            <br/>
+            <table border='1' id='liquidacion'>
                 <tr><td>Item</td><td>Valor</td></tr>
-                <tr><td>Valor Base</td><td><input type="text" id="valorbase"></td></tr>
-                <tr><td>Derechos Semaforizacion</td><td><input type="text" id="derechos"></td></tr>
-                <tr><td>Descuento</td><td><input type="text" id="descuento"></td></tr>
+                <tr><td>Valor Base</td><td><input type='text' id='valorbase'></td></tr>
+                <tr><td>Derechos Semaforizacion</td><td><input type='text' id='derechos'></td></tr>
+                <tr><td>Descuento</td><td><input type='text' id='descuento'></td></tr>
             </table>
             <br/>
-            Formula: <input type="text" id="formula" value="<valorbase> + <derechos> + <descuento>" size="100">
+            <button id='calcularLiquidacion'>Calcular</button>
+            <br/><br/>
+            <h1>Formula: </h1><input type='text' id='formula' value='<valorbase> + <derechos> + <descuento>' size='100'>
             <br/><br/>
             <table>
-                <tr><td><input type="checkbox" id="descuento"> 10% Descuento</td><td><button id="calcularLiquidacion">Calcular</button></td></tr>
-                <tr><td><input type="text" id="resultado"></td><td><button id="pagarLiquidacion">Pagar</button></td></tr>
+                <tr><td><h1>Valor a Pagar: </h1></td><td><input type='text' id='resultado' disabled></td><td><button id='pagarLiquidacion' disabled>Pagar</button></td><td><button id='generarComprobante' disabled>Comprobante</button></td></tr>
             </table>
         </div>
     </body>

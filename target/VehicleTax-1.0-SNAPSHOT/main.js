@@ -1,19 +1,19 @@
-$(document).on("ready", function() {
+$(document).on('ready', function() {
 	$('#consultar').click(function() {
-            window.location.href = "reporte.html";
+            window.location.href = 'reporte.html';
 	});
         
-        $("#actualizar").click(function() {
-            window.location.href = "pago.html";
+        $('#actualizar').click(function() {
+            window.location.href = 'pago.html';
 	});
         
         $('#buscarVehiculo').click(function() {
             $.get('http://localhost:8080/VehicleTax/webresources/Service/' + $('#placa').val(), function(data) {
                 updateFieldsVehiculo(data);
-                $('#actualizarVehiculo').removeAttr("disabled");
+                $('#actualizarVehiculo').removeAttr('disabled');
                 $.get('http://localhost:8080/VehicleTax/webresources/Service/Contribuyente/' + $('#idcontribuyente').val(), function(data) {
                     updateFieldsContribuyente(data);
-                    $('#actualizarContribuyente').removeAttr("disabled");
+                    $('#actualizarContribuyente').removeAttr('disabled');
                 });
             });
 	});
@@ -23,7 +23,7 @@ $(document).on("ready", function() {
             $.ajax({
                 url: 'http://localhost:8080/VehicleTax/webresources/Service',
                 type: 'POST',
-                contentType: "application/json",
+                contentType: 'application/json',
                 data: JSON.stringify(vehiculo)
             }).done(function(data) {
                 updateFieldsVehiculo(data);
@@ -34,12 +34,12 @@ $(document).on("ready", function() {
             });
 	});
         
-        $("#actualizarContribuyente").click(function() {
+        $('#actualizarContribuyente').click(function() {
             var contribuyente = {id:$('#idcontribuyente').val(),identificacion:$('#identificacion').val(),direccion:$('#direccion').val(),nombre:$('#nombre').val(),ciudad:$('#ciudad').val()};
             $.ajax({
                 url: 'http://localhost:8080/VehicleTax/webresources/Service',
                 type: 'PUT',
-                contentType: "application/json",
+                contentType: 'application/json',
                 data: JSON.stringify(contribuyente)
             }).done(function(data) {
                 updateFieldsContribuyente(data);
@@ -50,14 +50,33 @@ $(document).on("ready", function() {
             });
 	});
         
-        $("#calcularLiquidacion").click(function() {
+        $('#calcularLiquidacion').click(function() {
             var exp = $('#formula').val();
             var result = replaceExpression(exp);
             $('#resultado').val(result);
+            $('#pagarLiquidacion').removeAttr('disabled');
 	});
         
-        $("#pagarLiquidacion").click(function() {
-            alert('pagarLiquidacion');
+        $('#pagarLiquidacion').click(function() {
+            $('#generarComprobante').removeAttr('disabled');
+            $('#actualizarVehiculo').attr("disabled", "disabled");
+            $('#actualizarContribuyente').attr("disabled", "disabled");
+            $('#pagarLiquidacion').attr("disabled", "disabled");
+            $('#resultado').val('');
+            clearFieldsVehiculo();
+            clearFieldsContribuyente();
+	});
+        
+        $('#consultarPagados').click(function() {
+            alert('consultarPagados');
+	});
+        
+        $('#consultarPendientes').click(function() {
+            alert('consultarPendientes');
+	});
+        
+        $('#generarComprobante').click(function() {
+            alert('generarComprobante');
 	});
         
         function replaceExpression(exp) {
@@ -86,10 +105,27 @@ $(document).on("ready", function() {
             $('#idcontribuyente').val(data.idcontribuyente);
         }
         
+        function clearFieldsVehiculo() {
+            $('#idvehiculo').val('');
+            $('#modelo').val('');
+            $('#uso').val('');
+            $('#marca').val('');
+            $('#linea').val('');
+            $('#capacidad').val('');
+            $('#idcontribuyente').val('');
+        }
+        
         function updateFieldsContribuyente(data) {
             $('#identificacion').val(data.identificacion);
             $('#nombre').val(data.nombre);
             $('#direccion').val(data.direccion);
             $('#ciudad').val(data.ciudad);
+        }
+        
+        function clearFieldsContribuyente() {
+            $('#identificacion').val('');
+            $('#nombre').val('');
+            $('#direccion').val('');
+            $('#ciudad').val('');
         }
 });
