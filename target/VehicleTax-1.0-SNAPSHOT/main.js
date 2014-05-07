@@ -35,7 +35,7 @@ $(document).on("ready", function() {
 	});
         
         $("#calcularLiquidacion").click(function() {
-            var exp = "<valorbase> + <derechos> + (<descuento> - 30)";
+            var exp = $('#formula').val();
             var result = replaceExpression(exp);
             $('#resultado').val(result);
 	});
@@ -57,7 +57,7 @@ $(document).on("ready", function() {
         }
         
         function GetValue(expression) {
-            return $('#liquidacion tr#' + expression + ' td').slice(1, 2).text();
+            return $('#'+expression).val();
         }
         
         function updateFields(data) {

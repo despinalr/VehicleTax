@@ -46,13 +46,13 @@
             Liquidacion
             <br/><br/>
             <table border="1" id="liquidacion">
-                <tr><td>Item</td><td>Hasta 16/04</td><td>Hasta 22/06</td></tr>
-                <tr id="valorbase"><td>Valor Base</td><td>288000</td><td>350000</td></tr>
-                <tr id="derechos"><td>Derechos Semaforizacion</td><td>34000</td><td>45000</td></tr>
-                <tr id="descuento"><td>Descuento</td><td>-29000</td><td>0</td></tr>
+                <tr><td>Item</td><td>Valor</td></tr>
+                <tr><td>Valor Base</td><td><input type="text" id="valorbase"></td></tr>
+                <tr><td>Derechos Semaforizacion</td><td><input type="text" id="derechos"></td></tr>
+                <tr><td>Descuento</td><td><input type="text" id="descuento"></td></tr>
             </table>
             <br/>
-            Valor Total = Valor Base + Derechos Semaforizacion + Descuento
+            Formula: <input type="text" id="formula" value="<valorbase> + <derechos> + <descuento>" size="100">
             <br/><br/>
             <table>
                 <tr><td><input type="checkbox" id="descuento"> 10% Descuento</td><td><button id="calcularLiquidacion">Calcular</button></td></tr>
