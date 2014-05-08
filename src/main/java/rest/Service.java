@@ -17,6 +17,7 @@ import logic.ILogic;
 import entity.Vehiculo;
 import entity.Contribuyente;
 import entity.Pago;
+import java.util.List;
 
 @Path("/Service")
 @Stateless
@@ -53,5 +54,17 @@ public class Service {
     @Path("/Pago")
     public Pago createPago(Pago pago){
             return _logic.createPago(pago);
+    }
+    
+    @GET
+    @Path("/Pago/Pendientes")
+    public List consultarPagosPendientes(){
+        return _logic.consultarPagosPendientes();
+    }
+    
+    @GET
+    @Path("/Pago/Realizados")
+    public List consultarPagosRealizados(){
+        return _logic.consultarPagosRealizados();
     }
 }

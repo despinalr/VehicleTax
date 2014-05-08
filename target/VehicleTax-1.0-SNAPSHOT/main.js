@@ -80,15 +80,19 @@ $(document).on('ready', function() {
 	});
         
         $('#consultarPagados').click(function() {
-            alert('consultarPagados');
+            $.get('http://localhost:8080/VehicleTax/webresources/Service/Pago/Realizados', function(data) {
+                addRowsToReporTable(data);
+            });
 	});
         
         $('#consultarPendientes').click(function() {
-            alert('consultarPendientes');
+            $.get('http://localhost:8080/VehicleTax/webresources/Service/Pago/Pendientes', function(data) {
+                addRowsToReporTable(data);
+            });
 	});
         
         $('#generarComprobante').click(function() {
-            alert('generarComprobante');
+            alert('comprobante');
 	});
         
         function replaceExpression(exp) {
@@ -144,5 +148,17 @@ $(document).on('ready', function() {
         function getCurrentDateAsString() {
             var today = new Date();
             return (today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear()).toString();
+        }
+        
+        function addRowsToReporTable(data) {
+            $('#tablaReporte tr:gt(0)').remove();
+            $.each(data, function(index, value) {
+                var row = '<tr>';
+                $.each(value, function(subindex, subvalue) {
+                    row = row + '<td>' + subvalue + '</td>';
+                });
+                row = row + '</tr>';
+                $('#tablaReporte').append(row);
+            });
         }
 });

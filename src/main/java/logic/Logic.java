@@ -42,4 +42,20 @@ public class Logic implements ILogic {
         entityManager.persist(pago);
         return pago;
     }
+    
+    public List consultarPagosPendientes() {
+        return consultarPagos("");
+    }
+    
+    public List consultarPagosRealizados() {
+        return consultarPagos(" not");
+    }
+    
+    private List consultarPagos(String value) {
+        String query = "select contribuyente.nombre, contribuyente.identificacion, contribuyente.DIRECCION, contribuyente.CIUDAD, vehiculo.placa, pago.fecha, pago.valor\n" +
+                        "from vehiculo inner join contribuyente on vehiculo.idcontribuyente = contribuyente.id left join pago on vehiculo.id = pago.idvehiculo\n" +
+                        "where pago.idvehiculo is" + value +" null";
+        Query q = entityManager.createNativeQuery(query);
+        return q.getResultList();
+    }
 }
