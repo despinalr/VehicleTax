@@ -58,13 +58,25 @@ $(document).on('ready', function() {
 	});
         
         $('#pagarLiquidacion').click(function() {
-            $('#generarComprobante').removeAttr('disabled');
-            $('#actualizarVehiculo').attr("disabled", "disabled");
-            $('#actualizarContribuyente').attr("disabled", "disabled");
-            $('#pagarLiquidacion').attr("disabled", "disabled");
-            $('#resultado').val('');
-            clearFieldsVehiculo();
-            clearFieldsContribuyente();
+            var pago = {idvehiculo:$('#idvehiculo').val(),valor:$('#resultado').val(),fecha:getCurrentDateAsString()};
+            $.ajax({
+                url: 'http://localhost:8080/VehicleTax/webresources/Service/Pago',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(pago)
+            }).done(function(data) {
+                $('#generarComprobante').removeAttr('disabled');
+                $('#actualizarVehiculo').attr("disabled", "disabled");
+                $('#actualizarContribuyente').attr("disabled", "disabled");
+                $('#pagarLiquidacion').attr("disabled", "disabled");
+                $('#resultado').val('');
+                clearFieldsVehiculo();
+                clearFieldsContribuyente();
+                alert('Pago Realizado con Exito!!!');
+            })
+            .error(function(data) {
+                alert('Error en Realizando Pago!!!');
+            });
 	});
         
         $('#consultarPagados').click(function() {
@@ -127,5 +139,10 @@ $(document).on('ready', function() {
             $('#nombre').val('');
             $('#direccion').val('');
             $('#ciudad').val('');
+        }
+        
+        function getCurrentDateAsString() {
+            var today = new Date();
+            return (today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear()).toString();
         }
 });

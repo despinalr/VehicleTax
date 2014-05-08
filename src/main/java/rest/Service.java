@@ -1,7 +1,5 @@
 package rest;
 
-import entity.Vehiculo;
-import entity.Contribuyente;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Path;
@@ -15,6 +13,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.inject.Inject;
 import logic.ILogic;
+
+import entity.Vehiculo;
+import entity.Contribuyente;
+import entity.Pago;
 
 @Path("/Service")
 @Stateless
@@ -45,5 +47,11 @@ public class Service {
     @PUT
     public Contribuyente updateContribuyente(Contribuyente contribuyente){
             return _logic.updateContribuyente(contribuyente);
+    }
+    
+    @POST
+    @Path("/Pago")
+    public Pago createPago(Pago pago){
+            return _logic.createPago(pago);
     }
 }

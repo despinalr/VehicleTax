@@ -2,4 +2,5 @@ logic\ILogic.class
 entity\Vehiculo.class
 logic\Logic.class
 rest\Service.class
+entity\Pago.class
 entity\Contribuyente.class

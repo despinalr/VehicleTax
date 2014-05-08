@@ -10,6 +10,7 @@ import java.util.List;
 
 import entity.Vehiculo;
 import entity.Contribuyente;
+import entity.Pago;
 
 @Default
 @Stateless
@@ -35,5 +36,10 @@ public class Logic implements ILogic {
     
     public Contribuyente updateContribuyente(Contribuyente contribuyente) {
         return entityManager.merge(contribuyente);
+    }
+    
+    public Pago createPago(Pago pago) {
+        entityManager.persist(pago);
+        return pago;
     }
 }
